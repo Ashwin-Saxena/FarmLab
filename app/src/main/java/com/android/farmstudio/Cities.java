@@ -2,6 +2,7 @@ package com.android.farmstudio;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -76,10 +77,23 @@ String city="";
         String name=adapterView.getItemAtPosition(i).toString();
         Toast.makeText(Cities.this,name,Toast.LENGTH_SHORT).show();
 
+        city=name;
+
+
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
+
+    public void proceed(View dsds)
+    {
+        Intent intent = new Intent(Cities.this,index.class);
+        intent.putExtra("city",city);
+        startActivity(intent);
+
+    }
+
+
 }
