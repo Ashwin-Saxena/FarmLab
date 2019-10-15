@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/sq"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Cities"></activity>
+        <activity android:name=".visualization"></activity>
+        <activity android:name=".soil_on_weather" />
+        <activity android:name=".Cities" />
         <activity android:name=".Weather" />
         <activity android:name=".index" />
         <activity android:name=".States" />

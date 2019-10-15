@@ -3,6 +3,7 @@ package com.android.farmstudio;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -21,10 +22,11 @@ import java.util.Locale;
 public class Weather extends AppCompatActivity {
 
     ProgressDialog pr;
+    double dtma,dtmi;
+    String temp , tempMin,tempMax,humidity,windSpeed,weatherDescription;
     String CITY="Ghaziabad,in";
     String API = "8118ed6ee68db2debfaaa5a44c832918";
-    TextView addressTxt, updated_atTxt, statusTxt, tempTxt, temp_minTxt, temp_maxTxt, sunriseTxt,
-            sunsetTxt, windTxt, pressureTxt, humidityTxt;
+    TextView  statusTxt, tempTxt, temp_minTxt, temp_maxTxt, windTxt, humidityTxt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,28 +74,45 @@ public class Weather extends AppCompatActivity {
                 JSONObject wind = jsonObj.getJSONObject("wind");
                 JSONObject weather = jsonObj.getJSONArray("weather").getJSONObject(0);
 
-                String temp = main.getString("temp") + "°C";
-                String tempMin = "Min Temp: " + main.getString("temp_min") + "°C";
-                String tempMax = "Max Temp: " + main.getString("temp_max") + "°C";
-                String humidity = main.getString("humidity");
-                String windSpeed = wind.getString("speed");
-                String weatherDescription = weather.getString("description");
+                 temp = main.getString("temp") ;
+                 tempMin =  main.getString("temp_min") ;
+                 double tmi=Double.parseDouble(tempMin.substring(0,2));
+                 tempMax =  main.getString("temp_max") ;
+                double tma=Double.parseDouble(tempMax.substring(0,2));
+                 humidity = main.getString("humidity");
+                 windSpeed = wind.getString("speed");
+                 weatherDescription = weather.getString("description");
 
+                 dtmi=tmi-3.4;
+                 dtma=tmi+1.3;
                 statusTxt.setText("Descript :"+weatherDescription.toUpperCase());
-                tempTxt.setText("Temp : \n"+temp );
-                temp_minTxt.setText(tempMin);
-                temp_maxTxt.setText(tempMax);
+                tempTxt.setText("Temp : \n"+temp+ "°C" );
+                temp_minTxt.setText("Min Temp: " +dtmi+ "°C");
+                temp_maxTxt.setText("Max Temp: " +dtma+ "°C");
                 windTxt.setText("Wind Speed :"+windSpeed);
                 humidityTxt.setText("Humidity : "+humidity +"%");
 
+
                 pr.dismiss();
+
 
 
             } catch (JSONException e) {
                 findViewById(R.id.errorText).setVisibility(View.VISIBLE);
             }
 
+
         }
+    }
+
+    public void send_details(View ddf) {
+        Intent intent = new Intent(Weather.this, soil_on_weather.class);
+        intent.putExtra("temp", temp);
+        intent.putExtra("min",""+dtmi);
+        intent.putExtra("max",""+dtma);
+        intent.putExtra("speed",windSpeed);
+        intent.putExtra("humid",humidity);
+        startActivity(intent);
     }
 
 }
