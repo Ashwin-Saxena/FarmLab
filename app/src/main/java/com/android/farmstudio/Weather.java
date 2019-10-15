@@ -22,6 +22,7 @@ import java.util.Locale;
 public class Weather extends AppCompatActivity {
 
     ProgressDialog pr;
+    TextView th;
     double dtma,dtmi;
     String temp , tempMin,tempMax,humidity,windSpeed,weatherDescription;
     String CITY="Ghaziabad,in";
@@ -33,10 +34,11 @@ public class Weather extends AppCompatActivity {
         setContentView(R.layout.activity_weather);
 
         CITY =getIntent().getStringExtra("city")+",in";
-
+        th=findViewById(R.id.temp);
+        //th.setText(CITY.toUpperCase());
         Toast.makeText(Weather.this,"Your City : " +CITY,Toast.LENGTH_SHORT).show();
         statusTxt = findViewById(R.id.status);
-        tempTxt = findViewById(R.id.temp);
+        tempTxt = findViewById(R.id.temp2);
         temp_minTxt = findViewById(R.id.temp_min);
         temp_maxTxt = findViewById(R.id.temp_max);
         windTxt = findViewById(R.id.wind);
@@ -44,7 +46,7 @@ public class Weather extends AppCompatActivity {
 
         new weatherTask().execute();
 
-
+        th.setText(CITY.toUpperCase());
     }
 
 

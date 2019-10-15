@@ -25,5 +25,13 @@
         <item>Kota</item>
     </string-array>
 
+    <string-array name="madhya">
+        <item>Select</item>
+        <item>Ujjain</item>
+        <item>Gwalior</item>
+        <item>Bhopal</item>
+        <item>Indore</item>
+    </string-array>
+
 
 </resources>

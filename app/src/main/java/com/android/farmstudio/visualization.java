@@ -32,6 +32,7 @@ import java.util.List;
 
 public class visualization extends AppCompatActivity {
 Button btn;
+String text;
 ImageView img;
 TextView tt;
     public Bitmap selectedImage;
@@ -43,7 +44,7 @@ TextView tt;
         btn = findViewById(R.id.button6);
         tt=findViewById(R.id.textView5);
         img=findViewById(R.id.imageView3);
-        FirebaseLocalModel localModel = new FirebaseLocalModel.Builder("my_local_model")
+        FirebaseLocalModel localModel = new FirebaseLocalModel.Builder("model")
                 .setAssetFilePath("manifest.json")
                 .build();
         FirebaseModelManager.getInstance().registerLocalModel(localModel);
@@ -84,6 +85,8 @@ TextView tt;
         try {
             imagebitmap(selectedImage);
         } catch (FirebaseMLException e) {
+            Toast.makeText(visualization.this, "Something went wrong", Toast.LENGTH_LONG).show();
+
             e.printStackTrace();
         }
     }
@@ -105,16 +108,25 @@ TextView tt;
                     @Override
                     public void onSuccess(List<FirebaseVisionImageLabel> labels) {
                         for (FirebaseVisionImageLabel label: labels) {
-                            String text = label.getText();
+                             text = label.getText();
                             float confidence = label.getConfidence();
                             String ptt = tt.getText().toString();
-                            tt.setText("\nSoil: "+text+"\nConfidence : "+confidence);
+//                            tt.setText("\nSoil: "+text);
+
                         }
 
-                        Toast.makeText(visualization.this,"Succ",Toast.LENGTH_SHORT).show();
 
-
-
+                        Toast.makeText(visualization.this,"Success ",Toast.LENGTH_SHORT).show();
+                        if (text!="Desert")
+                        {
+                            text="Red Soil\n\nThe red color of soil is due to the presence of iron oxide. It appears yellow when it contains less iron or more water. Red soil contains a mixture of clay and sand, antis not fertile. However, the soil can be fertile by adding manures and fertilizers.";
+                        }
+                        else  if (text=="Desert")
+                        {
+                            text="Black Soil\n\nBlack soil is also known as black lava soil. This soil black in color. It is formed from lava rocks and is rich in clay.";
+                        }
+                        else {text= "Sandy soil \n\nSandy soil contains more than 60% sand and clay. It contains very little clay and silt, so it is porous. The size of soil particles in sandy soil is from 0.2mm to 2.0mm. The water building capacity of a sandy soil is very poor. Hence, there is a lot of air present in this type of soil.\n";}
+                    tt.setText(text);
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

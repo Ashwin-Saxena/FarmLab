@@ -52,16 +52,12 @@ String city="";
 
             case  "Madhya Pradesh":
                 ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(this,
-                        R.array.up, android.R.layout.simple_spinner_item);
+                        R.array.madhya, android.R.layout.simple_spinner_item);
                 adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinner.setAdapter(adapter3);
                 spinner.setOnItemSelectedListener(this);
                 break;
-                default:ArrayAdapter<CharSequence> adapter4 = ArrayAdapter.createFromResource(this,
-                        R.array.up, android.R.layout.simple_spinner_item);
-                    adapter4.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                    spinner.setAdapter(adapter4);
-                    spinner.setOnItemSelectedListener(this);
+                default:Toast.makeText(Cities.this,"अपना राज्य चुनें",Toast.LENGTH_SHORT).show();
 
 
         }
