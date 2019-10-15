@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1040210701749",
+    "firebase_url": "https://farmstudio-9e9c8.firebaseio.com",
+    "project_id": "farmstudio-9e9c8",
+    "storage_bucket": "farmstudio-9e9c8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1040210701749:android:fa0966cbafdd65a683bdfc",
+        "android_client_info": {
+          "package_name": "com.android.farmstudio"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1040210701749-qnofah8j64gnnhcn95sll8suo4pnk25v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.android.farmstudio",
+            "certificate_hash": "e9b87c2839815c4aa9e26a729e873157ca6007d1"
+          }
+        },
+        {
+          "client_id": "1040210701749-3rnhosvdebd11a2v5ei1mlq1727mu67p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6DJu7LDef99-PbjJHbWxvu8Bhjx6mrJI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1040210701749-3rnhosvdebd11a2v5ei1mlq1727mu67p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

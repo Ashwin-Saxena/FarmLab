@@ -51,7 +51,7 @@
         android:layout_marginEnd="14dp"
         android:layout_marginBottom="244dp"
         android:background="@null"
-        android:onClick="weather"
+        android:onClick="soil"
         android:text="Button" />
 
     <ImageView
